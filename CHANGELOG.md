@@ -6,7 +6,8 @@ All notable changes to the FairMarket protocol and this repository are documente
 
 ### Added
 
-- Phase 1 formal spec in `spec/`: 00-overview (conformance language), 01-problem, 02-why (rationale, UPI/ONDC precedent), 03-what (actors, layers, non-goals), 04-identity (portable identity, verification tiers), 05-offers (signed offers, direct-price rule, no exclusivity), 06-orders (state machine, signed transitions), 07-fees (split marketplace/fulfillment fees, 8% cap, atomic split, anti-circumvention), 08-reputation (portable ratings, fraud signals), 09-disputes (claim types, arbitration), 10-extensions (system + food/mobility/retail/services sketches), 11-roadmap (phases 2-5 with success criteria)
+- PAPER.md: the canonical reference paper (abstract, problem with measured evidence, related work incl. UPI/ONDC/OpenBazaar/co-ops, design principles, system overview, condensed normative core, worked $20-order economic comparison, trust model, extensions, governance, adversarial analysis, phased roadmap, open questions, references, glossary, citation block). ARCHITECTURE.md folded into it and removed.
+- Repository reframed explicitly as paper-not-product: the idea exists to be referenced, criticized, and built on; nothing is promised beyond the idea.
 
 ### Changed
 

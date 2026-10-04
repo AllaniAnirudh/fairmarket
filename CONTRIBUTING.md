@@ -2,7 +2,7 @@
 
 ## What this project is right now
 
-FairMarket is an open protocol for fair digital commerce, currently at the design stage. The most valuable contributions right now are criticism, questions, and concrete proposals, not code. Read [ARCHITECTURE.md](ARCHITECTURE.md) first, especially the open questions section.
+FairMarket is an open protocol for fair digital commerce, currently at the design stage. The most valuable contributions right now are criticism, questions, and concrete proposals, not code. Read [PAPER.md](PAPER.md) first, especially the adversarial analysis and open questions.
 
 ## Ways to contribute
 

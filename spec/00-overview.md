@@ -4,6 +4,8 @@
 
 This directory holds the formal specification of the FairMarket protocol: an open, neutral rail for digital commerce across all verticals. If you implement what is written here, your implementation interoperates with every other compliant implementation.
 
+The canonical statement of the idea is [PAPER.md](../PAPER.md): the problem, related work, design, economics, adversarial analysis, and roadmap in one referenceable document. This directory is the normative companion: the precise rules.
+
 ## How to read it
 
 - `01-problem.md` — the problem this protocol exists to solve
