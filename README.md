@@ -19,12 +19,12 @@ Separate the marketplace into a neutral protocol rail and competing apps, the wa
 
 ## Status
 
-Spec draft v0.1. This repository currently holds the architecture and design documents. The core protocol specification and reference implementation come next. See [ARCHITECTURE.md](ARCHITECTURE.md) for the full design.
+Spec draft v0.1. The `spec/` directory now holds the full Phase 1 formal specification: the problem, the rationale, the system overview, and the normative core (identity, offers, orders, fees, reputation, disputes), plus the extension system and the roadmap for the phases after. See [spec/00-overview.md](spec/00-overview.md) to start reading. Reference implementation comes next.
 
 ## Repository layout
 
 - `ARCHITECTURE.md` — the full design: principles, layered architecture, core protocol, extension system, fee model, trust and disputes, governance, rollout plan
-- `spec/` — will hold the formal protocol specification (starting next)
+- `spec/` — the Phase 1 formal specification (start at `spec/00-overview.md`)
 - `rfcs/` — RFC template and future proposals (see `RFC_PROCESS.md`)
 - `GOVERNANCE.md`, `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, `SECURITY.md`, `VERSIONING.md`, `CHANGELOG.md` — how the project runs
 - `LICENSE` — Apache License 2.0
