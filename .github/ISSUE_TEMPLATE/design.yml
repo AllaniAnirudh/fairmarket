@@ -1,0 +1,24 @@
+name: Design flaw or question
+description: Report a problem with the protocol design or ask a question that needs an answer.
+title: "[design]: "
+labels: ["design"]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What is the problem or question?
+      description: Describe the flaw, gap, or question as concretely as you can. Reference the relevant section of ARCHITECTURE.md or the spec.
+    validations:
+      required: true
+  - type: textarea
+    id: impact
+    attributes:
+      label: Why does it matter?
+      description: Who is affected, and what breaks if this is not addressed?
+    validations:
+      required: true
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: Suggested direction (optional)
+      description: If you have an idea for how to fix or answer it, sketch it here.
