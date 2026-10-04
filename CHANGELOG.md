@@ -8,6 +8,7 @@ All notable changes to the FairMarket protocol and this repository are documente
 
 - PAPER.md: the canonical reference paper (abstract, problem with measured evidence, related work incl. UPI/ONDC/OpenBazaar/co-ops, design principles, system overview, condensed normative core, worked $20-order economic comparison, trust model, extensions, governance, adversarial analysis, phased roadmap, open questions, references, glossary, citation block). ARCHITECTURE.md folded into it and removed.
 - Repository reframed explicitly as paper-not-product: the idea exists to be referenced, criticized, and built on; nothing is promised beyond the idea.
+- `diagrams/`: Mermaid flow diagrams (transaction/money flow, order lifecycle state machine, layered architecture), embedded in PAPER.md and rendered natively on GitHub.
 
 ### Changed
 

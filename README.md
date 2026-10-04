@@ -28,6 +28,7 @@ Separate the marketplace into a neutral protocol rail and competing apps, the wa
 ## Repository layout
 
 - `PAPER.md` — the canonical paper: problem, related work, design, economics, adversarial analysis, roadmap, references
+- `diagrams/` — flow diagrams (transaction/money flow, order lifecycle, layered architecture), rendered on GitHub
 - `spec/` — the Phase 1 formal specification (start at `spec/00-overview.md`)
 - `rfcs/` — RFC template and future proposals (see `RFC_PROCESS.md`)
 - `GOVERNANCE.md`, `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, `SECURITY.md`, `VERSIONING.md`, `CHANGELOG.md` — how the project runs

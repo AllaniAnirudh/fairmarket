@@ -118,11 +118,28 @@ ActivityPub, Matrix, and the AT Protocol show that open protocols can standardiz
 
 ### 4.2 Layers
 
-```
-Layer 3   Applications        Buyer apps, seller apps, fulfillment provider apps
-Layer 2   Vertical extensions food/v1, mobility/v1, retail/v1, services/v1
-Layer 1   Core protocol       Identity, offers, orders, fees, reputation, disputes
-Layer 0   Governance          Spec stewardship, RFC process, fee policy
+```mermaid
+flowchart TB
+    subgraph L3["Layer 3 — Applications"]
+        BA[Buyer Apps]
+        SA[Seller Apps]
+        FA[Fulfillment Apps]
+    end
+    subgraph L2["Layer 2 — Vertical Extensions"]
+        E1[food/v1]
+        E2[mobility/v1]
+        E3[retail/v1]
+        E4[services/v1]
+    end
+    subgraph L1["Layer 1 — Core Protocol"]
+        C["Identity · Offers · Orders<br/>Fees · Reputation · Disputes"]
+    end
+    subgraph L0["Layer 0 — Governance"]
+        G["RFC Process · Fee Policy · Stewards"]
+    end
+    BA & SA & FA --> L2
+    L2 --> C
+    C --> G
 ```
 
 Layer 1 knows nothing about pizzas or rides. Layer 2 adds domain schemas. Layer 3 competes.
@@ -165,6 +182,25 @@ created -> confirmed -> in_progress -> fulfilled -> settled
 
 Transitions are signed by the responsible actor and appended to the order's history. The confirmed offer is snapshotted; later offer changes cannot affect a placed order. A storefront MUST NOT forge or alter order states.
 
+```mermaid
+stateDiagram-v2
+    [*] --> created
+    created --> confirmed : seller accepts
+    created --> cancelled
+    confirmed --> in_progress : fulfillment starts
+    confirmed --> cancelled : per cancellation terms
+    in_progress --> fulfilled : declared complete
+    in_progress --> disputed : claim filed
+    fulfilled --> settled : payment split released
+    fulfilled --> disputed : claim filed
+    disputed --> resolved : arbiter decision
+    resolved --> settled
+    resolved --> refunded
+    settled --> [*]
+    refunded --> [*]
+    cancelled --> [*]
+```
+
 ### 5.4 Fees and payment split
 
 Each order carries a `fee_breakdown` with up to three line items, all visible before confirmation:
@@ -174,6 +210,29 @@ Each order carries a `fee_breakdown` with up to three line items, all visible be
 3. **Fulfillment fee** — set by the fulfillment provider, shown separately, and binding once confirmed. For mobility, the fare estimate at confirmation is the maximum charge.
 
 Settlement MUST be atomic: seller, storefront, and fulfillment provider are paid in one operation. Escrow is available for high-value or made-to-order transactions.
+
+```mermaid
+sequenceDiagram
+    participant Buyer
+    participant Storefront
+    participant Seller
+    participant Fulfillment
+    participant Rail as Protocol Rail
+
+    Seller->>Rail: publish signed offer<br/>$20 direct price
+    Rail-->>Storefront: syndicate offer
+    Buyer->>Storefront: discover offer
+    Storefront->>Buyer: $20.00 item<br/>+ $1.60 marketplace fee<br/>+ $3.50 fulfillment fee
+    Buyer->>Storefront: confirm order
+    Storefront->>Rail: order created (signed)
+    Note over Rail: atomic payment split
+    Rail->>Seller: $20.00 item price
+    Rail->>Storefront: $1.60 marketplace fee (capped at 8%)
+    Rail->>Fulfillment: $3.50 fulfillment fee (transparent)
+    Seller->>Fulfillment: hand off order
+    Fulfillment->>Buyer: deliver + tracking events
+    Buyer->>Rail: confirm receipt + rate seller
+```
 
 The split exists because a single flat fee cannot work: on a $20 food order the rider payout alone is about $3 (15 percent), so an 8 percent all-in cap could not fund delivery without hidden charges or bankruptcy. Separating the fees keeps the marketplace fee small and honest while pricing fulfillment at its real, visible cost.
 
